@@ -2,47 +2,12 @@ body {
     background-color: #0D0D0D;
 }
 
-/* .nav-header,
-.nav-menu {
-    z-index: 99999;
-}
-
-.nav-header {
-    background-color: #fff;
-    width: 60px;
-    position: fixed;
-    left: 240px;
-    top: 0;
-    bottom: 0;
-}
-
-.nav-menu {
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 250px;
-}
-
-.nav-menu-links li {
-    color: rgb(249, 246, 246);
-    font-weight: 300;
-    cursor: pointer;
-    padding: 14px 30px;
-}
-
-.nav-menu-foot {
-    padding: 0px 20px 50px 20px;
-} */
-
-/* #viewData {
-    padding-top: 50px;
-} */
 
 #SearchItem {
     padding-top: 150px;
 }
-.searchST{
+
+.searchST {
     background-color: #0D0D0D;
     z-index: 999;
     padding-top: 50px;
@@ -60,7 +25,8 @@ img {
     object-fit: cover;
     width: 100%;
 }
-.safe{
+
+.safe {
     overflow: hidden;
     cursor: pointer;
 }
@@ -74,7 +40,8 @@ img {
     transition: all 0.5s;
     background-color: rgba(255, 255, 255, 0.7);
 }
-input::placeholder{
+
+input::placeholder {
     text-align: center;
 }
 
@@ -82,18 +49,19 @@ input::placeholder{
     top: 0;
     bottom: 0;
 }
-.RliStyle{
+
+.RliStyle {
     color: #155724;
     background-color: #d4edda;
     border-color: #c3e6cb;
 }
-.tliStyle{
+
+.tliStyle {
     color: #721c24;
     background-color: #f8d7da;
     border-color: #f5c6cb;
 }
 
-/*----------------------------------------------------*/
 
 .nav-header {
     background-color: #fff;
@@ -138,35 +106,39 @@ nav {
     opacity: 0;
 }
 
-.nav-header-mark i{
-cursor: pointer;
+.nav-header-mark i {
+    cursor: pointer;
 }
 
-input{
+input {
     text-align: center;
-    box-shadow: 0 .5rem 1rem rgba(255,255,255,.1);
-    margin-bottom:0;
+    box-shadow: 0 .5rem 1rem rgba(255, 255, 255, .1);
+    margin-bottom: 0;
 }
-.form-control:focus{
+
+.form-control:focus {
     background-color: transparent;
     color: white;
     box-shadow: 0 .5rem 1rem transparent;
 }
 
-.fa-check{
-    color:rgb(5, 10, 7);
+.fa-check {
+    color: rgb(5, 10, 7);
 }
-input{
+
+input {
     position: relative;
 }
-.form-group i{
+
+.form-group i {
     position: absolute;
-    top:0;
+    top: 0;
     right: 40px;
-    color:#28a745;
+    color: #28a745;
     display: none;
 }
-.form-control{
-    border:none;
-    border-bottom:2px solid #0fd;
+
+.form-control {
+    border: none;
+    border-bottom: 2px solid #0fd;
 }

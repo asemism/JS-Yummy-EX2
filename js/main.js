@@ -2,12 +2,9 @@ function clean() {
     $('#viewData').html('')
 }
 
-
 ////////////////////////////////////////////////////////////////
-//fristRun()
+fristRun()
 async function fristRun() {
-    await OCnav()
-    clean()
     $('#viewData').html(
         `
     <div class="container  text-center my-1 py-2 mt-5 position-relative ">
@@ -17,7 +14,6 @@ async function fristRun() {
     </div>
     `
     )
-    console.log('OK');
     await fristRunURL()
 }
 
@@ -42,9 +38,8 @@ function fristRunDisplay(fristRunlist) {
         `}
     $('#cat-item').html(box)
 
-    $('.st').click(async (e)=>{
-        console.log(e.target.getAttribute("move-to") );
-        mealAPI(e.target.getAttribute("move-to")  );
+    $('.st').click(async (e) => {
+        mealAPI(e.target.getAttribute("move-to"));
     })
 }
 
@@ -73,13 +68,13 @@ $('#openNav').click(() => {
 async function OCnav() {
     let navWidth = $('.nav-menu').outerWidth()
     if ($('nav').css('left') == `${-navWidth}px`) {
-        await $('nav').animate( { left: 0 }, 500)
+        await $('nav').animate({ left: 0 }, 500)
         $('.nav-header-mark i').addClass('fa-times')
     } else {
         await $('nav').animate({ left: `${-navWidth}px` }, 500)
         $('.nav-header-mark i').removeClass('fa-times')
     }
-  }
+}
 
 // Search
 $('#Search').click(async () => {
@@ -101,32 +96,24 @@ $('#Search').click(async () => {
                 
             </div>
             `
-            $('#viewData').html(box)
+    $('#viewData').html(box)
 
-        let SBFL =  document.getElementById('SBFL')
-        SBFL.addEventListener('keyup',()=>{
-    
-            if(SBFL.value.length > 1)
-            {
-                SBFL.value.slice(0,1);
-            }
-            console.log(SBFL.value.slice(0,1));
-            $("#SBFL").val(SBFL.value.slice(0,1))
-            
-            SBFLurl(SBFL.value);
-        })
+    let SBFL = document.getElementById('SBFL')
+    SBFL.addEventListener('keyup', () => {
+
+        if (SBFL.value.length > 1) {
+            SBFL.value.slice(0, 1);
+        }
+        $("#SBFL").val(SBFL.value.slice(0, 1))
+
+        SBFLurl(SBFL.value);
+    })
 
 
     // SBN
     $('#SBN').keyup(async (e) => {
-        // console.log(e.target.value)
         SBNurl(e.target.value)
     })
-
-        // $('#SBFL').keyup(async (e) => {
-        //     // console.log(e.target.value)
-        //     SBNurl(e.target.value)
-        // })
 })
 
 // Search API
@@ -155,8 +142,8 @@ function SBNDisplay(SBNlist) {
         </div>
         `}
     $('#SearchItem').html(box)
-    $('.st').click(async (e)=>{
-        mealAPI(e.target.getAttribute("move-to")  );
+    $('.st').click(async (e) => {
+        mealAPI(e.target.getAttribute("move-to"));
     })
 }
 
@@ -177,7 +164,6 @@ $('#Categories').click(async () => {
 async function CategoriesURL() {
     let Catapi = await fetch(`https://www.themealdb.com/api/json/v1/1/categories.php`)
     Catapi = await Catapi.json()
-    console.log(Catapi.categories);
     CatDisplay(Catapi.categories)
 }
 function CatDisplay(Catlist) {
@@ -190,15 +176,14 @@ function CatDisplay(Catlist) {
               <img src="${Catlist[i].strCategoryThumb}" move-to="${Catlist[i].strCategory}" alt="">
               <div class="layer d-flex align-items-center justify-content-center flex-column " move-to="${Catlist[i].strCategory}">
                 <h4 move-to="${Catlist[i].strCategory}" >${Catlist[i].strCategory}</h4>
-                <p move-to="${Catlist[i].strCategory}">${Catlist[i].strCategoryDescription.split(' ').slice(0,20).join(' ')}</p>
+                <p move-to="${Catlist[i].strCategory}">${Catlist[i].strCategoryDescription.split(' ').slice(0, 20).join(' ')}</p>
               </div>
             </div>
           </div>
         `}
     $('#cat-item').html(box)
 
-    $('.st').click(async (e)=>{
-        console.log(e.target.getAttribute("move-to")  );
+    $('.st').click(async (e) => {
         ingredienturl(e.target.getAttribute("move-to"))
     })
 }
@@ -228,8 +213,8 @@ function ingredientDisplay(ingredientlist) {
         `}
     $('#cat-item').html(box)
 
-    $('.st').click(async (e)=>{
-        mealAPI(e.target.getAttribute("move-to")  );
+    $('.st').click(async (e) => {
+        mealAPI(e.target.getAttribute("move-to"));
     })
 }
 
@@ -269,16 +254,14 @@ function AreaDisplay(Arealist) {
         `}
     $('#cat-item').html(box)
 
-    $('.st').click(async (e)=>{
-        console.log(e.target.getAttribute("move-to") );
-        filterAreaURL(e.target.getAttribute("move-to")  );
+    $('.st').click(async (e) => {
+        filterAreaURL(e.target.getAttribute("move-to"));
     })
 }
 
 async function filterAreaURL(q) {
     let AreaapiResuld = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${q}`)
     AreaapiResuld = await AreaapiResuld.json()
-    console.log(AreaapiResuld.meals);
     ingredientDisplay(AreaapiResuld.meals)
 }
 
@@ -288,7 +271,6 @@ async function filterAreaURL(q) {
 // Ingredsients
 
 $('#Ingredients').click(async () => {
-    console.log('Ingredsients');
     await OCnav()
     clean()
     $('#viewData').html(
@@ -306,7 +288,6 @@ $('#Ingredients').click(async () => {
 async function IngredsURL(q) {
     let IngredsapiResuld = await fetch(`https://www.themealdb.com/api/json/v1/1/list.php?i=list`)
     IngredsapiResuld = await IngredsapiResuld.json()
-    console.log(IngredsapiResuld.meals);
     IngredsDisplay(IngredsapiResuld.meals)
 }
 
@@ -318,49 +299,44 @@ function IngredsDisplay(Ingredslist) {
             <div class="st safe text-white " move-to="${Ingredslist[i].strIngredient}">
                 <i move-to="${Ingredslist[i].strIngredient}"  class=" text-success fa-solid fa-bowl-food fa-3x" ></i>
                 <h4 move-to="${Ingredslist[i].strIngredient}" >${Ingredslist[i].strIngredient}</h4>
-                <p move-to="${Ingredslist[i].strIngredient}">${Ingredslist[i].strDescription.split(' ').slice(0,20).join(' ')}</p>
+                <p move-to="${Ingredslist[i].strIngredient}">${Ingredslist[i].strDescription.split(' ').slice(0, 20).join(' ')}</p>
             </div>
           </div>
         `}
     $('#cat-item').html(box)
 
-    $('.st').click(async (e)=>{
-        console.log(e.target.getAttribute("move-to") );
-        filterIngredsURL(e.target.getAttribute("move-to")  );
+    $('.st').click(async (e) => {
+        filterIngredsURL(e.target.getAttribute("move-to"));
     })
 }
 
 async function filterIngredsURL(q) {
     let IngredsapiResuld = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${q}`)
     IngredsapiResuld = await IngredsapiResuld.json()
-    console.log(IngredsapiResuld.meals);
     ingredientDisplay(IngredsapiResuld.meals)
 }
 
 async function mealAPI(q) {
     let mealapiResult = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${q}`)
     mealapiResult = await mealapiResult.json()
-    console.log(mealapiResult.meals[0]);
     mealDisplay(mealapiResult.meals[0])
 }
 
 // mealDisplay
-function mealDisplay (mealData){
+function mealDisplay(mealData) {
     let Ings = ''
     let tagList = ''
     let tagItem
     for (let i = 1; i <= 20; i++) {
-        if(mealData[`strIngredient${i}`])
-        {Ings+=`<li class="my-3 mx-1 p-1 RliStyle rounded ">${mealData[`strMeasure${i}`]} ${mealData[`strIngredient${i}`]}</li>`}
+        if (mealData[`strIngredient${i}`]) { Ings += `<li class="my-3 mx-1 p-1 RliStyle rounded ">${mealData[`strMeasure${i}`]} ${mealData[`strIngredient${i}`]}</li>` }
     }
-    if (tagItem != null){
+    if (tagItem != null) {
         tagItem = mealData.strTags.split(",")
-        for(var i = 0 ; i < tagItem.length ;i++ )
-        {
+        for (var i = 0; i < tagItem.length; i++) {
             tagList += `<li class="my-3 mx-1 tliStyle p-1 alert-danger rounded">${tagItem[i]}</li>`
-        }      
+        }
     }
-    $('#viewData').html(box=`
+    $('#viewData').html(box = `
     <div  class= "container w-75 my-1 py-2 mt-5 position-relative" >   
     <div class="mealDisplay row mt-3 p-2">
     <div class="leftSide text-center  col-md-5 myM text-white">
@@ -370,8 +346,8 @@ function mealDisplay (mealData){
     <div class="rightSide col-md-7 myM text-white text-left">
         <h2>Instructions</h2>
         <p class="fs-6" >${mealData.strInstructions}</p>
-        <p>Area :<span>${mealData.strArea }</span> </p>
-        <p>Category :<span>${mealData.strCategory }</span></p>
+        <p>Area :<span>${mealData.strArea}</span> </p>
+        <p>Category :<span>${mealData.strCategory}</span></p>
 
         <h3>Recipes :</h3>
         <ul class="list-unstyled d-flex flex-wrap "   >
@@ -385,8 +361,8 @@ function mealDisplay (mealData){
         </ul>
 
         
-        <a class="btn btn-outline-success" target="_blank" href="${mealData.strSource }">Sourc</a>
-        <a class="btn btn-outline-danger" target="_blank" href="${mealData.strYoutube }">Youtup</a>
+        <a class="btn btn-outline-success" target="_blank" href="${mealData.strSource}">Sourc</a>
+        <a class="btn btn-outline-danger" target="_blank" href="${mealData.strYoutube}">Youtup</a>
 
     </div>
 </div>
@@ -397,7 +373,7 @@ function mealDisplay (mealData){
 //////////////////////////////////
 // contact 
 
-$("#ContactUs").click(()=>{ 
+$("#ContactUs").click(() => {
 
     $('#viewData').html(` 
     
@@ -447,7 +423,7 @@ $("#ContactUs").click(()=>{
         </div>
     </div>
     </div>	
-      <button type="submit" id="submitBtn" class="btn btn-outline-success mt-5 disabled">Submit</button>
+      <button type="submit" id="submitBtn" class="btn btn-outline-success mt-5 ">Submit</button>
     
     </section> `)
 
