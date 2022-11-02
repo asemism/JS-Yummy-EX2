@@ -484,6 +484,8 @@ $("#ContactUs").click(async () => {
             $('#userName').addClass('is-invalid')
             $('#userName').removeClass('is-valid')
             $('.alertName').addClass('d-block')
+            userNameInput = true
+            ifTrue ()
         }
 
     }
@@ -499,6 +501,8 @@ $("#ContactUs").click(async () => {
             $('#userEmail').addClass('is-invalid')
             $('#userEmail').removeClass('is-valid')
             $('.alertEmail').addClass('d-block')
+            userEmailInput = false
+            ifTrue ()
         }
     }
     function userPhoneCall (x){
@@ -513,6 +517,7 @@ $("#ContactUs").click(async () => {
             $('#userPhone').removeClass('is-valid')
             $('.alertPhone').addClass('d-block')
             userPhoneInput = false
+            ifTrue ()
         }
     }
     function userAgeCall (x){
@@ -527,6 +532,7 @@ $("#ContactUs").click(async () => {
             $('#userAge').removeClass('is-valid')
             $('.alertAge').addClass('d-block')
             userAgeInput = false
+            ifTrue ()
         }
     }
     function userPasswordCall (x){
@@ -541,6 +547,7 @@ $("#ContactUs").click(async () => {
             $('#userPassword').removeClass('is-valid')
             $('.alertPassword').addClass('d-block')
             userPasswordInput = false
+            ifTrue ()
         }
     }
     function userRePasswordCall (x){
@@ -555,6 +562,7 @@ $("#ContactUs").click(async () => {
             $('#userRePassword').removeClass('is-valid')
             $('.alertRePassword').addClass('d-block')
             userRePasswordInput = false
+            ifTrue ()
         }
     }
 })
